@@ -56,8 +56,8 @@ def detalle_grupo(request, grupoNombre):
     grupo["maestros"] = []
     # obtener alumnos del grupo
     cursor.execute(
-        """SELECT Matricula, Nombre, Apellidos FROM Alumnos WHERE Grupo = %s""", 
-        [grupo["nombre"]]
+        """EXEC MostrarGrupoPorId @IdGrupo = %s""", 
+        [grupo["id"]]
     )
     alumnos = lista_data_a_diccionarios(cursor.fetchall(), ["matricula", "nombre", "apellidos"])
     grupo["alumnos"] += alumnos
