@@ -18,12 +18,19 @@ def registro(request):
         grupo = request.POST['grupo']
         carrera = request.POST['carrera']
         semestre = request.POST['semestre']
+        
+        cursor = connection.cursor()
 
-        with connection.cursor() as cursor:
-            # make a valid cursor.execute
+        try:
             cursor.execute("""
                 INSERT INTO Alumnos (matricula, Nombre, Apellidos, Correo, Celular, IdCarrera, Semestre, Grupo)
-                VALUES (%s, %s, %s, %s, %s, (SELECT IdGrupo FROM Grupos WHERE Nombre = %s), %s, (SELECT IdGrupo FROM Grupos WHERE Nombre = %s))
+                VALUES (%s, %s, %s, %s, %s, (SELECT IdCarrera FROM Carreras WHERE Nombre = %s), %s, (SELECT IdGrupo FROM Grupos WHERE Nombre = %s))
             """, (matricula, nombre, apellidoP + " "+ apellidoM, correo, celular, carrera, semestre, grupo))
+            connection.commit()
+        except Exception as e:
+            connection.rollback()
+            return render(request, 'alumnos/registro.html', {'error': str(e)})
+        finally:
+            connection.close()
 
         return redirect(reverse("inicio"))
