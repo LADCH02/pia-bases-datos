@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'inicio',
     'alumnos',
     'maestros',
+    'grupos',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

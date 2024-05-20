@@ -73,7 +73,7 @@ def detalle_alumno(request, matricula):
     if request.method == "GET":
         cursor = connection.cursor()
         cursor.execute("""
-            MostrarAlumnoPorMatricula @Matricula = %s
+            EXEC MostrarAlumnoPorMatricula @Matricula = %s
         """, [matricula])
         alumnos = cursor.fetchall()
         connection.close()
