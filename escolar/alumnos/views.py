@@ -1,7 +1,6 @@
 from django.db import connection
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.contrib.messages import add_message
 from util.bd import lista_alumnos_a_diccionarios
 
 # Create your views here.
@@ -40,29 +39,41 @@ def alumnos(request):
     if request.method == "GET":
         cursor = connection.cursor()
         cursor.execute("""
-            SELECT Matricula, Nombre, Apellidos, Correo, Celular,
-                (SELECT Nombre FROM Carreras WHERE Carreras.IdCarrera = Alumnos.IdCarrera) AS Carrera,
-                Semestre, Grupo,
-                (SELECT Nombre FROM Grupos WHERE Grupos.IdGrupo = Alumnos.Grupo) AS Grupo
-            FROM Alumnos
+            EXEC MostrarTodosAlumnos
         """)
         alumnos = cursor.fetchall()
         connection.close()
         
         alumnos_dicc = lista_alumnos_a_diccionarios(alumnos)
-        print(alumnos_dicc)
 
         return render(request, 'alumnos/index.html', {'alumnos': alumnos_dicc})
+
+def alumnos_filtrados(request):
+    if request.method == "GET":
+        carrera = request.GET["carrera"]
+        semestre = request.GET["semestre"]
+        
+        cursor = connection.cursor()
+        cursor.execute("""
+            EXEC MostrarAlumnosPorCarreraYSemestre @CarreraNombre=%s, @Semestre=%s
+        """, [carrera, semestre])
+        alumnos = cursor.fetchall()
+        connection.close()
+        
+        alumnos_dicc = lista_alumnos_a_diccionarios(alumnos)
+
+        return render(request, 'alumnos/index.html', {'alumnos': alumnos_dicc})
+    
+def alumno_especifico(request):
+    matricula = request.GET["matricula"]
+    return redirect('detalle-alumno', matricula=matricula)
+
     
 def detalle_alumno(request, matricula):
     if request.method == "GET":
         cursor = connection.cursor()
         cursor.execute("""
-            SELECT Matricula, Nombre, Apellidos, Correo, Celular,
-                (SELECT Nombre FROM Carreras WHERE Carreras.IdCarrera = Alumnos.IdCarrera) AS Carrera,
-                Semestre,
-                (SELECT Nombre FROM Grupos WHERE Grupos.IdGrupo = Alumnos.Grupo) AS Grupo
-            FROM Alumnos WHERE Matricula = %s
+            MostrarAlumnoPorMatricula @Matricula = %s
         """, [matricula])
         alumnos = cursor.fetchall()
         connection.close()

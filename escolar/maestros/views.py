@@ -44,7 +44,6 @@ def maestros(request):
         connection.close()
         
         alumnos_dicc = lista_maestros_a_diccionarios(maestros)
-        print(alumnos_dicc)
 
         return render(request, 'maestros/index.html', {'maestros': alumnos_dicc})
     

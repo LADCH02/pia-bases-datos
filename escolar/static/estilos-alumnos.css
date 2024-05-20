@@ -69,6 +69,7 @@ nav ul li a:hover {
 
 /* Grupo de formulario */
 .form-group {
+    margin-top: 25px;
     margin-bottom: 15px;
 }
 
