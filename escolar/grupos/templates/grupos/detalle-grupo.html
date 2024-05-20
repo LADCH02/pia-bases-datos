@@ -6,75 +6,24 @@
 <link rel = 'stylesheet' type="text/css" href="{% static 'estilos3.css' %}"/>
 {% endblock %}
 
-{% block title %}Editar Información del Alumno{% endblock title %}
+{% block title %}Información sobre el grupo{% endblock title %}
 
 {% block content %}
 <div class="container-wrapper">
     <div class="container">
-        <h2>Registro de Alumnos</h2>
-        <form method="POST" action="{% url 'detalle-alumno' alumno.matricula %}">
+        <h2>Grupo: {{ grupo.nombre }}</h2>
+        <div class="alumno-card">
+            <h3>Alumnos</h3>
+            {% for alumno in grupo.alumnos %}
+            <p>{{ alumno.nombre }} {{ alumno.apellidos }}</p>
+            {% endfor %}
 
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="matricula">Matricula:</label>
-                <input type="text" id="matricula" name="matricula" placeholder="Ingrese su Matricula" value="{{ alumno.matricula }}" required>
-            </div>
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ingrese sus Nombres" value="{{ alumno.nombre }}" required>
-            </div>
-            <div class="form-group">
-                <label for="apellidoP">Apellido Paterno:</label>
-                <input type="text" id="apellidoP" name="apellidoP" placeholder="Ingrese su Apellido Paterno" value="{{ alumno.apellidoP }}" required>
-            </div>
-            <div class="form-group">
-                <label for="apellidoM">Apellido Materno:</label>
-                <input type="text" id="apellidoM" name="apellidoM" placeholder="Ingrese su Apellido Materno" value="{{ alumno.apellidoM }}" required>
-            </div>
-            <div class="form-group">
-                <label for="correo">Correo:</label>
-                <input type="email" id="correo" name="correo" placeholder="Ingrese su Correo" value="{{ alumno.correo }}" required>
-            </div>
-            <div class="form-group">
-                <label for="celular">Celular:</label>
-                <input type="tel" id="celular" name="celular" placeholder="Ingrese su Celular" value="{{ alumno.celular }}" required>
-            </div>
-            <div class="form-group">
-                <label for="semestre">Semestre:</label>
-                <input type="text" id="semestre" name="semestre" placeholder="Ingrese su Semestre" value="{{ alumno.semestre }}" required>
-            </div>
-            <div class="form-group">
-                <label for="grupo">Grupo:</label>
-                <select id="grupo" name="grupo" required>
-                    <option value="">Seleccione un Grupo</option>
-                    <option value="Grupo 1" {% if alumno.grupo == "Grupo 1" %}selected{% endif %}>Grupo 1</option>
-                    <option value="Grupo 2" {% if alumno.grupo == "Grupo 2" %}selected{% endif %}>Grupo 2</option>
-                    <option value="Grupo 3" {% if alumno.grupo == "Grupo 3" %}selected{% endif %}>Grupo 3</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="carrera">Carrera:</label>
-                <select id="carrera" name="carrera" required>
-                    <option value="">Seleccione una carrera</option>
-                    <option value="Matematicas" {% if alumno.carrera == "Matematicas" %}selected{% endif %}>Matematicas</option>
-                    <option value="Actuaria" {% if alumno.carrera == "Actuaria" %}selected{% endif %}>Actuaria</option>
-                    <option value="Fisica" {% if alumno.carrera == "Fisica" %}selected{% endif %}>Fisica</option>
-                    <option value="Ciencias Computacionales" {% if alumno.carrera == "Ciencias Computacionales" %}selected{% endif %}>Ciencias Computacionales</option>
-                    <option value="Multimedia y Animacion Digital" {% if alumno.carrera == "Multimedia y Animacion Digital" %}selected{% endif %}>Multimedia y Animacion Digital</option>
-                    <option value="Seguridad en Tecnologias de Informacion" {% if alumno.carrera == "Seguridad en Tecnologias de Informacion" %}selected{% endif %}>Seguridad en Tecnologias de Informacion</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button class="button-verde" type="submit">Guardar</button>
-            </div>
-            <div class="form-group">
-                <a class="button-rojo" href="{% url 'eliminar-alumno' alumno.matricula %}">Eliminar</a>
-            </div>
-        </form>
-        {% if error %}
-        <p style="color: red;">Error: {{ error }}</p>
-        {% endif %}
-        <a class="button-amarillo" href="{% url 'alumnos' %}">Alumnos</a>
+            <h3>Maestros</h3>
+            {% for maestro in grupo.maestros %}
+            <p>{{ maestro.nombre }} {{ maestro.apellidos }}</p>
+            {% endfor %}
+        </div>
+        <a class="button-amarillo" href="{% url 'grupos' %}">Grupos</a>
     </div>
 </div>
 {% endblock %}

@@ -35,6 +35,10 @@
                 {% for alumno in grupo.alumnos %}
                 <p><strong>Alumno:</strong> {{ alumno.nombre }} {{ alumno.apellidos }}</p>
                 {% endfor %}
+
+                {% for maestro in grupo.maestros %}
+                <p><strong>Maestro:</strong> {{ maestro.nombre }} {{ maestro.apellidos }}</p>
+                {% endfor %}
             </div>
         {% endfor %}
     </div>
