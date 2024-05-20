@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.escolaruanl.com</title>
+    <link rel = 'stylesheet' type="text/css" href="estilos4.css"/>
+    {% block extra_css %}{% endblock extra_css %}
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Escolar FCFM</h1>
+
+    <nav>
+        <ul>
+            <li><a href="Interfaz.html">Escolar</a></li>
+            <li><a href="Alumnos.html">Estudiantes</a></li>
+            <li><a href="Maestros.html">Maestros</a></li>
+            <li><a href="https://www.fcfm.uanl.mx/facultad/historia">Historia</a></li>
+        </ul>
+    </nav>
+    <div class="contenido">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>Contacto
+            Av. Universidad s/n. Ciudad Universitaria San Nicolás de los Garza, C.P. 66451
+            Nuevo León, México
+            
+            Tel. 81 83 29 40 30</p>
+    </footer>
+</body>
+</html>

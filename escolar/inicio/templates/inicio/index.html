@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="articulos">
+    <div class="secciones">
+        <div>
+            <h2>Facultad Ciencia Fisico Matematicas</h2>
+            <p>Somos la FCFM, esta es la zona de escolar donde tendras diferentes opciones para poder realizar diferentes acciones como registrarte en la facultad, tambien contamos en la parte superior con los campos de Estudiantes donde podras dirigirte a una seccion donde te pudan ayudar de manera correcta, tambien contamos con el area Maestros y el area de historia donde podras conocer un poco sobre es esta maravillosa institucion </p>
+        </div>
+        <div><img src="{% static 'principal.png' %}"></div>
+    </div>
+</div>
+<div class="menu-secundario">
+    <a href="Registrar.html">Registrarte</a>
+    <a href="https://www.fcfm.uanl.mx/#">carrera</a>
+    <a href="https://www.fcfm.uanl.mx/facultad/bolsa-de-trabajo">Bolsa</a>
+</div>
+{% endblock %}
