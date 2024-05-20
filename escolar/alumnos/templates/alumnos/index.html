@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'estilos-alumnos.css' %}"/>
+{% endblock %}
+
+{% block title %}Registro{% endblock title %}
+
+{% block content %}
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Lista de Alumnos</h2>
+        {% for alumno in alumnos %}
+            <div class="alumno-card">
+                <h3>{{ alumno.nombre }} {{ alumno.apellidos }}</h3>
+                <p><strong>Matrícula:</strong> {{ alumno.matricula }}</p>
+                <p><strong>Correo:</strong> {{ alumno.correo }}</p>
+                <p><strong>Celular:</strong> {{ alumno.celular }}</p>
+                <p><strong>Carrera:</strong> {{ alumno.carrera }}</p>
+                <p><strong>Semestre:</strong> {{ alumno.semestre }}</p>
+                <p><strong>Grupo:</strong> {{ alumno.grupo }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
