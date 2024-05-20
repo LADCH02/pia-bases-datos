@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'estilos-alumnos.css' %}"/>
+{% endblock %}
+
+{% block title %}Maestros{% endblock title %}
+
+{% block content %}
+<div class="container-wrapper">
+    <div class="container">
+        <a class="button" href="{% url 'maestros-registro' %}">Nuevo maestro</a>
+        <h2>Lista de Maestros</h2>
+        {% for maestro in maestros %}
+            <div class="alumno-card">
+                <h3>{{ maestro.nombre }} {{ maestro.apellidos }}</h3>
+                <p><strong>Número de empleado:</strong> {{ maestro.numEmpleado }}</p>
+                <p><strong>Correo:</strong> {{ maestro.correo }}</p>
+                <p><strong>Celular:</strong> {{ maestro.celular }}</p>
+                <p><strong>Grupo:</strong> {{ maestro.grupo }}</p>
+                <a class="button" href="{% url 'detalle-maestro' maestro.numEmpleado %}">Editar</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

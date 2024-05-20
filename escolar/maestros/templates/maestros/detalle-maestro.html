@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel = 'stylesheet' type="text/css" href="{% static 'estilos3.css' %}"/>
+{% endblock %}
+
+{% block title %}Editar Información del Maestro{% endblock title %}
+
+{% block content %}
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Registro de Maestros</h2>
+        <form method="POST" action="{% url 'detalle-maestro' maestro.numEmpleado %}">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="numEmpleado">Número de empleado:</label>
+                <input type="text" id="numEmpleado" name="numEmpleado" placeholder="Ingrese su Número de empleado" value="{{ maestro.numEmpleado }}" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese sus Nombres" value="{{ maestro.nombre }}" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidoP">Apellido Paterno:</label>
+                <input type="text" id="apellidoP" name="apellidoP" placeholder="Ingrese su Apellido Paterno" value="{{ maestro.apellidoP }}" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidoM">Apellido Materno:</label>
+                <input type="text" id="apellidoM" name="apellidoM" placeholder="Ingrese su Apellido Materno" value="{{ maestro.apellidoM }}" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="Ingrese su Correo" value="{{ maestro.correo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" placeholder="Ingrese su Celular" value="{{ maestro.celular }}" required>
+            </div>
+            <div class="form-group">
+                <label for="grupo">Grupo:</label>
+                <select id="grupo" name="grupo" required>
+                    <option value="">Seleccione un Grupo</option>
+                    <option value="Grupo 1" {% if maestro.grupo == "Grupo 1" %}selected{% endif %}>Grupo 1</option>
+                    <option value="Grupo 2" {% if maestro.grupo == "Grupo 2" %}selected{% endif %}>Grupo 2</option>
+                    <option value="Grupo 3" {% if maestro.grupo == "Grupo 3" %}selected{% endif %}>Grupo 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button class="button-verde" type="submit">Guardar</button>
+            </div>
+            <div class="form-group">
+                <a class="button-rojo" href="{% url 'eliminar-maestro' maestro.numEmpleado %}">Eliminar</a>
+            </div>
+        </form>
+        {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+        {% endif %}
+        <a class="button-amarillo" href="{% url 'maestros' %}">Maestros</a>
+    </div>
+</div>
+{% endblock %}
+

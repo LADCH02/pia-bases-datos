@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel = 'stylesheet' type="text/css" href="{% static 'estilos3.css' %}"/>
+{% endblock %}
+
+{% block title %}Registro{% endblock title %}
+
+{% block content %}
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Registro de Maestros</h2>
+        <form method="POST" action="{% url 'maestros-registro' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="matricula">Número de empleado:</label>
+                <input type="text" id="numEmpleado" name="numEmpleado" placeholder="Ingrese su Numero de empleado" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese sus Nombres" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidoP">Apellido Paterno:</label>
+                <input type="text" id="apellidoP" name="apellidoP" placeholder="Ingrese su Apellido Paterno" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidoM">Apellido Materno:</label>
+                <input type="text" id="apellidoM" name="apellidoM" placeholder="Ingrese su Apellido Materno" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="Ingrese su Correo" required>
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" placeholder="Ingrese su Celular" required>
+            </div>
+            <div class="form-group">
+                <label for="grupo">Grupo:</label>
+                <select id="grupo" name="grupo" required>
+                    <option value="">Seleccione un Grupo</option>
+                    <option value="Grupo 1">Grupo 1</option>
+                    <option value="Grupo 2">Grupo 2</option>
+                    <option value="Grupo 3">Grupo 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar">
+            </div>
+        </form>
+        {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
