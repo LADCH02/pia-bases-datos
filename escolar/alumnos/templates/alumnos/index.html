@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'estilos-alumnos.css' %}"/>
 {% endblock %}
 
-{% block title %}Registro{% endblock title %}
+{% block title %}Alumnos{% endblock title %}
 
 {% block content %}
 <div class="container-wrapper">
@@ -21,6 +21,7 @@
                 <p><strong>Carrera:</strong> {{ alumno.carrera }}</p>
                 <p><strong>Semestre:</strong> {{ alumno.semestre }}</p>
                 <p><strong>Grupo:</strong> {{ alumno.grupo }}</p>
+                <a class="button" href="{% url 'detalle-alumno' alumno.matricula %}">Editar</a>
             </div>
         {% endfor %}
     </div>
