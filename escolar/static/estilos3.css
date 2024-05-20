@@ -1,0 +1,118 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Navegación */
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Contenedor principal */
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Ajusta la altura restando el espacio del nav y el h1 */
+    padding: 20px;
+}
+
+/* Contenedor del formulario */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Título del formulario */
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grupo de formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Etiquetas del formulario */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Campos de entrada */
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group select {
+    width: calc(100% - 20px); /* Compensa el padding para hacer ancho completo */
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* Campo de selección */
+.form-group select {
+    -webkit-appearance: none; /* Elimina la flecha predeterminada de select en Safari */
+    -moz-appearance: none; /* Elimina la flecha predeterminada de select en Firefox */
+    appearance: none; /* Elimina la flecha predeterminada de select en navegadores modernos */
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray"><polygon points="0,0 10,10 20,0"/></svg>') no-repeat right center;
+    background-size: 12px;
+    padding-right: 30px;
+}
+
+/* Botón de envío */
+.form-group input[type="submit"] {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
