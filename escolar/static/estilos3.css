@@ -125,3 +125,36 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+.button-rojo {
+    padding: 5px 8px;
+    background-color: #af4c4c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button-verde {
+    padding: 5px 8px;
+    background-color: #53af4c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button-amarillo {
+    padding: 5px 8px;
+    background-color: #d2d25c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}

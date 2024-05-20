@@ -112,3 +112,17 @@ def detalle_alumno(request, matricula):
             connection.close()
 
         return redirect(reverse("alumnos"))
+    
+def eliminar_alumno(request, matricula):
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute("DELETE FROM Alumnos WHERE Matricula = %s", [matricula])
+        connection.commit()
+    except Exception as e:
+        connection.rollback()
+        return render(request, 'alumnos/detalle-alumno.html', {'error': str(e)})
+    finally:
+        connection.close()
+
+    return redirect(reverse("alumnos"))
