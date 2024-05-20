@@ -47,7 +47,6 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 100px); /* Ajusta la altura restando el espacio del nav y el h1 */
     padding: 20px;
 }
 
@@ -115,4 +114,14 @@ nav ul li a:hover {
 
 .form-group input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0 10px 0;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    bottom: 0;
 }
