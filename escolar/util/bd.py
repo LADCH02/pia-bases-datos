@@ -8,7 +8,7 @@ def lista_data_a_diccionarios(datas, llaves):
     return datas_dict_list
 
 def lista_alumnos_a_diccionarios(alumnos):
-    llaves = ['matricula', 'nombre', 'apellidos', 'correo', 'celular', 'carrera', 'semestre', 'grupo', 'grupoNombre']
+    llaves = ['matricula', 'nombre', 'apellidos', 'correo', 'celular', 'carrera', 'semestre', 'grupo']
     return lista_data_a_diccionarios(alumnos, llaves)
 
 def lista_maestros_a_diccionarios(maestros):

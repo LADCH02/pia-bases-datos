@@ -32,14 +32,16 @@
             <div class="alumno-card">
                 <p><strong>Grupo:</strong> {{ grupo.nombre }}</p>
 
+                <strong>Alumnos</strong>
                 {% for alumno in grupo.alumnos %}
-                <p><strong>Alumno:</strong> {{ alumno.nombre }} {{ alumno.apellidos }}</p>
+                <p>{{ alumno.nombre }} {{ alumno.apellidos }}</p>
                 {% endfor %}
-
+    
+                <strong>Maestros</strong>
                 {% for maestro in grupo.maestros %}
-                <p><strong>Maestro:</strong> {{ maestro.nombre }} {{ maestro.apellidos }}</p>
+                <p>{{ maestro.nombre }} {{ maestro.apellidos }}</p>
                 {% endfor %}
-            </div>
+                </div>
         {% endfor %}
     </div>
 </div>

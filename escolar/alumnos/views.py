@@ -24,7 +24,7 @@ def registro(request):
         try:
             cursor.execute("""
                 INSERT INTO Alumnos (Matricula, Nombre, Apellidos, Correo, Celular, IdCarrera, Semestre, Grupo)
-                VALUES (%s, %s, %s, %s, %s, (SELECT IdCarrera FROM Carreras WHERE Nombre = %s), %s, (SELECT IdGrupo FROM Grupos WHERE Nombre = %s))
+                VALUES (%s, %s, %s, %s, %s, (SELECT IdCarrera FROM Carreras WHERE Nombre = %s), %s, %s)
             """, (matricula, nombre, apellidoP + " "+ apellidoM, correo, celular, carrera, semestre, grupo))
             connection.commit()
         except Exception as e:
@@ -112,7 +112,7 @@ def detalle_alumno(request, matricula):
                     Celular = %s,
                     IdCarrera = (SELECT IdCarrera FROM Carreras WHERE Nombre = %s),
                     Semestre = %s,
-                    Grupo = (SELECT IdGrupo FROM Grupos WHERE Nombre = %s)
+                    Grupo = %s
                 WHERE Matricula = %s
             """, (matriculaNueva, nombre, apellidoP + " " + apellidoM, correo, celular, carrera, semestre, grupo, matricula))
             connection.commit()

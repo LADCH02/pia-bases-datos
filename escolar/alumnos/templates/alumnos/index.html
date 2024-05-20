@@ -56,7 +56,7 @@
                 <p><strong>Celular:</strong> {{ alumno.celular }}</p>
                 <p><strong>Carrera:</strong> {{ alumno.carrera }}</p>
                 <p><strong>Semestre:</strong> {{ alumno.semestre }}</p>
-                <p><strong>Grupo:</strong> {{ alumno.grupoNombre }}</p>
+                <p><strong>Grupo:</strong> {{ alumno.grupo }}</p>
                 <a class="button" href="{% url 'detalle-alumno' alumno.matricula %}">Editar</a>
             </div>
         {% endfor %}
