@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel = 'stylesheet' type="text/css" href="{% static 'estilos3.css' %}"/>
+{% endblock %}
+
+{% block title %}inicio{% endblock title %}
+
+{% block content %}
+<h1>Registrar FCFM</h1>
+
+<nav>
+    <ul>
+        <li><a href="Interfaz.html">Escolar</a></li>
+        <li><a href="Alumnos.html">Estudiantes</a></li>
+        <li><a href="Maestros.html">Maestros</a></li>
+        <li><a href="https://www.fcfm.uanl.mx/facultad/historia">Historia</a></li>
+    </ul>
+</nav>
+
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Registro de Alumnos</h2>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese sus Nombres">
+            </div>
+            <div class="form-group">
+                <label for="apellidoP">Apellido Paterno:</label>
+                <input type="text" id="apellidoP" name="apellidoP" placeholder="Ingrese su Apellido Paterno">
+            </div>
+            <div class="form-group">
+                <label for="apellidoM">Apellido Materno:</label>
+                <input type="text" id="apellidoM" name="apellidoM" placeholder="Ingrese su Apellido Materno">
+            </div>
+            <div class="form-group">
+                <label for="Correo">Correo:</label>
+                <input type="text" id="correo" name="correo" placeholder="Ingrese su Correo">
+            </div>
+            <div class="form-group">
+                <label for="Celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" placeholder="Ingrese su Celular">
+                </div>
+            
+            <div class="form-group">
+                <label for="carrera">Grupo:</label>
+                <select id="carrera" name="carrera" required>
+                    <option value="">Seleccione un Grupo</option>
+                    <option value="Grupo 1">Grupo 1</option>
+                    <option value="Grupo 2">Grupo 2</option>
+                    <option value="Grupo 3">Grupo 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="carrera">Carrera:</label>
+                <select id="carrera" name="carrera" required>
+                    <option value="">Seleccione una carrera</option>
+                    <option value="Matematicas">Matematicas</option>
+                    <option value="Actuaria">Actuaria</option>
+                    <option value="Fisica">Fisica</option>
+                    <option value="Ciencias Computacionales">Ciencias Computacionales</option>
+                    <option value="Multimedia y Animacion Digital">Multimedia y Animacion Digital</option>
+                    <option value="Seguridad en Tecnologias de Informacion">Seguridad en Tecnologias de Informacion</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
